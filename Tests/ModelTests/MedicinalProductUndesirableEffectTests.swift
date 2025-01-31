@@ -50,7 +50,7 @@ class MedicinalProductUndesirableEffectTests: XCTestCase {
 		XCTAssertEqual(inst.meta?.tag?[0].system?.absoluteString, "http://terminology.hl7.org/CodeSystem/v3-ActReason")
 		XCTAssertEqual(inst.symptomConditionEffect?.coding?[0].code, "Anaemia")
 		XCTAssertEqual(inst.symptomConditionEffect?.coding?[0].system?.absoluteString, "http://ema.europa.eu/example/undesirableeffectassymptom-condition-effect")
-		XCTAssertEqual(inst.symptomConditionEffect?.text, "Prevention of\nVTE in adult\npatients who have\nundergone\nelective hip or\nknee replacement\nsurgery (VTEp)")
+		XCTAssertEqual(inst.symptomConditionEffect?.text, "Prevention of\\nVTE in adult\\npatients who have\\nundergone\\nelective hip or\\nknee replacement\\nsurgery (VTEp)")
 		XCTAssertEqual(inst.text?.status, NarrativeStatus(rawValue: "generated")!)
 		
 		return inst

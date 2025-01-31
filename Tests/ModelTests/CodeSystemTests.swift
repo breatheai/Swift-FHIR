@@ -125,8 +125,8 @@ class CodeSystemTests: XCTestCase {
 		XCTAssertEqual(inst.extension_fhir?[2].valueInteger, 1)
 		XCTAssertEqual(inst.id, "list-example-codes")
 		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "urn:ietf:rfc:3986")
-		XCTAssertEqual(inst.identifier?[0].value, "urn:oid:2.16.840.1.113883.4.642.1.1105")
-		XCTAssertEqual(inst.meta?.lastUpdated?.description, "2018-12-27T22:37:54.724+11:00")
+		XCTAssertEqual(inst.identifier?[0].value, "urn:oid:2.16.840.1.113883.4.642.4.1105")
+		XCTAssertEqual(inst.meta?.lastUpdated?.description, "2019-11-01T09:29:23.356+11:00")
 		// Don't know how to create unit test for "meta?.profile?[0]", which is a FHIRCanonical
 		XCTAssertEqual(inst.name, "ExampleUseCodesForList")
 		XCTAssertEqual(inst.publisher, "FHIR Project")
@@ -135,7 +135,7 @@ class CodeSystemTests: XCTestCase {
 		XCTAssertEqual(inst.title, "Example Use Codes for List")
 		XCTAssertEqual(inst.url?.absoluteString, "http://terminology.hl7.org/CodeSystem/list-example-use-codes")
 		// Don't know how to create unit test for "valueSet", which is a FHIRCanonical
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}
@@ -166,7 +166,7 @@ class CodeSystemTests: XCTestCase {
 		XCTAssertEqual(inst.contact?[0].telecom?[1].system, ContactPointSystem(rawValue: "email")!)
 		XCTAssertEqual(inst.contact?[0].telecom?[1].value, "fhir@lists.hl7.org")
 		XCTAssertEqual(inst.content, CodeSystemContentMode(rawValue: "complete")!)
-		XCTAssertEqual(inst.date?.description, "2018-12-27T22:37:54+11:00")
+		XCTAssertEqual(inst.date?.description, "2019-11-01T09:29:23+11:00")
 		XCTAssertEqual(inst.description_fhir, "The type of actor - system or human.")
 		XCTAssertEqual(inst.experimental, false)
 		XCTAssertEqual(inst.extension_fhir?[0].url, "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg")
@@ -177,8 +177,8 @@ class CodeSystemTests: XCTestCase {
 		XCTAssertEqual(inst.extension_fhir?[2].valueInteger, 0)
 		XCTAssertEqual(inst.id, "examplescenario-actor-type")
 		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "urn:ietf:rfc:3986")
-		XCTAssertEqual(inst.identifier?[0].value, "urn:oid:2.16.840.1.113883.4.642.1.859")
-		XCTAssertEqual(inst.meta?.lastUpdated?.description, "2018-12-27T22:37:54.724+11:00")
+		XCTAssertEqual(inst.identifier?[0].value, "urn:oid:2.16.840.1.113883.4.642.4.859")
+		XCTAssertEqual(inst.meta?.lastUpdated?.description, "2019-11-01T09:29:23.356+11:00")
 		XCTAssertEqual(inst.name, "ExampleScenarioActorType")
 		XCTAssertEqual(inst.publisher, "HL7 (FHIR Project)")
 		XCTAssertEqual(inst.status, PublicationStatus(rawValue: "draft")!)
@@ -186,7 +186,7 @@ class CodeSystemTests: XCTestCase {
 		XCTAssertEqual(inst.title, "ExampleScenarioActorType")
 		XCTAssertEqual(inst.url?.absoluteString, "http://hl7.org/fhir/examplescenario-actor-type")
 		// Don't know how to create unit test for "valueSet", which is a FHIRCanonical
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}
@@ -226,7 +226,7 @@ class CodeSystemTests: XCTestCase {
 		XCTAssertEqual(inst.useContext?[0].valueCodeableConcept?.coding?[0].code, "337915000")
 		XCTAssertEqual(inst.useContext?[0].valueCodeableConcept?.coding?[0].display, "Homo sapiens (organism)")
 		XCTAssertEqual(inst.useContext?[0].valueCodeableConcept?.coding?[0].system?.absoluteString, "http://snomed.info/sct")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}

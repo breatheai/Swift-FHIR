@@ -109,40 +109,47 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.compose?.include?[0].concept?[9].code, "exception")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[0].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-rules")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[0].valueCode, "groups-only")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[1].extension_fhir?[0].url, "display")
+        
+        
+        XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[1].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
+        XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[1].extension_fhir?[0].url, "display")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[1].extension_fhir?[0].valueString, "(Most common)")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[1].extension_fhir?[1].url, "member")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[1].extension_fhir?[1].valueCode, "login")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[1].extension_fhir?[2].url, "member")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[1].extension_fhir?[2].valueCode, "conflict")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[1].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
+        
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[2].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[2].extension_fhir?[0].url, "code")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[2].extension_fhir?[0].valueString, "processing")
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[2].extension_fhir?[0].valueCode, "processing")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[2].extension_fhir?[1].url, "member")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[2].extension_fhir?[1].valueCode, "duplicate")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[2].extension_fhir?[2].url, "member")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[2].extension_fhir?[2].valueCode, "not-found")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[2].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
+        
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[0].url, "code")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[0].valueString, "invalid")
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[0].valueCode, "invalid")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[1].url, "member")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[1].valueCode, "structure")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[2].url, "member")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[2].valueCode, "required")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[3].url, "value")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[3].valueCode, "required")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[3].url, "member")
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[3].extension_fhir?[3].valueCode, "value")
+        
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].extension_fhir?[0].url, "code")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].extension_fhir?[0].valueString, "transient")
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].extension_fhir?[0].valueCode, "transient")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].extension_fhir?[1].url, "member")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].extension_fhir?[1].valueCode, "lock")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].extension_fhir?[2].url, "member")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].extension_fhir?[2].valueCode, "exception")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].extension_fhir?[3].url, "value")
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].extension_fhir?[3].url, "member")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].extension_fhir?[3].valueCode, "throttled")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[4].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
+        
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[5].url, "http://hl7.org/fhir/StructureDefinition/valueset-expand-group")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[5].extension_fhir?[0].url, "code")
-		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[5].extension_fhir?[0].valueString, "security")
+		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[5].extension_fhir?[0].valueCode, "security")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[5].extension_fhir?[1].url, "member")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[5].extension_fhir?[1].valueCode, "login")
 		XCTAssertEqual(inst.compose?.include?[0].extension_fhir?[5].extension_fhir?[2].url, "member")
@@ -219,7 +226,7 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.status, PublicationStatus(rawValue: "draft")!)
 		XCTAssertEqual(inst.text?.status, NarrativeStatus(rawValue: "generated")!)
 		XCTAssertEqual(inst.url?.absoluteString, "http://hl7.org/fhir/ValueSet/example-hierarchical")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}
@@ -348,7 +355,7 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.text?.status, NarrativeStatus(rawValue: "generated")!)
 		XCTAssertEqual(inst.title, "Example with inactive codes")
 		XCTAssertEqual(inst.url?.absoluteString, "http://hl7.org/fhir/ValueSet/inactive")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}
@@ -384,7 +391,7 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.text?.status, NarrativeStatus(rawValue: "generated")!)
 		XCTAssertEqual(inst.title, "ACME Codes for Cholesterol: Plasma only")
 		XCTAssertEqual(inst.url?.absoluteString, "http://hl7.org/fhir/ValueSet/example-filter")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}
@@ -424,7 +431,7 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.status, PublicationStatus(rawValue: "draft")!)
 		XCTAssertEqual(inst.text?.status, NarrativeStatus(rawValue: "generated")!)
 		XCTAssertEqual(inst.url?.absoluteString, "http://hl7.org/fhir/ValueSet/yesnodontknow")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}
@@ -448,7 +455,7 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.contact?[0].telecom?[0].value, "http://hl7.org/fhir")
 		XCTAssertEqual(inst.contact?[0].telecom?[1].system, ContactPointSystem(rawValue: "email")!)
 		XCTAssertEqual(inst.contact?[0].telecom?[1].value, "fhir@lists.hl7.org")
-		XCTAssertEqual(inst.date?.description, "2018-12-27T22:37:54+11:00")
+		XCTAssertEqual(inst.date?.description, "2019-11-01T09:29:23+11:00")
 		XCTAssertEqual(inst.description_fhir, "The type of actor - system or human.")
 		XCTAssertEqual(inst.experimental, false)
 		XCTAssertEqual(inst.extension_fhir?[0].url, "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg")
@@ -461,7 +468,7 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "urn:ietf:rfc:3986")
 		XCTAssertEqual(inst.identifier?[0].value, "urn:oid:2.16.840.1.113883.4.642.3.858")
 		XCTAssertEqual(inst.immutable, true)
-		XCTAssertEqual(inst.meta?.lastUpdated?.description, "2018-12-27T22:37:54.724+11:00")
+		XCTAssertEqual(inst.meta?.lastUpdated?.description, "2019-11-01T09:29:23.356+11:00")
 		// Don't know how to create unit test for "meta?.profile?[0]", which is a FHIRCanonical
 		XCTAssertEqual(inst.name, "ExampleScenarioActorType")
 		XCTAssertEqual(inst.publisher, "HL7 (FHIR Project)")
@@ -469,7 +476,7 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.text?.status, NarrativeStatus(rawValue: "generated")!)
 		XCTAssertEqual(inst.title, "ExampleScenarioActorType")
 		XCTAssertEqual(inst.url?.absoluteString, "http://hl7.org/fhir/ValueSet/examplescenario-actor-type")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}
@@ -491,7 +498,7 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.compose?.include?[0].system?.absoluteString, "http://terminology.hl7.org/CodeSystem/list-example-use-codes")
 		XCTAssertEqual(inst.contact?[0].telecom?[0].system, ContactPointSystem(rawValue: "url")!)
 		XCTAssertEqual(inst.contact?[0].telecom?[0].value, "http://hl7.org/fhir")
-		XCTAssertEqual(inst.date?.description, "2018-12-27T22:37:54+11:00")
+		XCTAssertEqual(inst.date?.description, "2019-11-01T09:29:23+11:00")
 		XCTAssertEqual(inst.description_fhir, "Example use codes for the List resource - typical kinds of use.")
 		XCTAssertEqual(inst.experimental, false)
 		XCTAssertEqual(inst.extension_fhir?[0].url, "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg")
@@ -504,7 +511,7 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.identifier?[0].system?.absoluteString, "urn:ietf:rfc:3986")
 		XCTAssertEqual(inst.identifier?[0].value, "urn:oid:2.16.840.1.113883.4.642.3.316")
 		XCTAssertEqual(inst.immutable, true)
-		XCTAssertEqual(inst.meta?.lastUpdated?.description, "2018-12-27T22:37:54.724+11:00")
+		XCTAssertEqual(inst.meta?.lastUpdated?.description, "2019-11-01T09:29:23.356+11:00")
 		// Don't know how to create unit test for "meta?.profile?[0]", which is a FHIRCanonical
 		XCTAssertEqual(inst.name, "ExampleUseCodesForList")
 		XCTAssertEqual(inst.publisher, "FHIR Project")
@@ -512,7 +519,7 @@ class ValueSetTests: XCTestCase {
 		XCTAssertEqual(inst.text?.status, NarrativeStatus(rawValue: "generated")!)
 		XCTAssertEqual(inst.title, "Example Use Codes for List")
 		XCTAssertEqual(inst.url?.absoluteString, "http://hl7.org/fhir/ValueSet/list-example-codes")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}

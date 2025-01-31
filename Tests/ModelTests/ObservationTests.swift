@@ -385,7 +385,7 @@ class ObservationTests: XCTestCase {
 		XCTAssertEqual(inst.valueQuantity?.code, "[in_i]")
 		XCTAssertEqual(inst.valueQuantity?.system?.absoluteString, "http://unitsofmeasure.org")
 		XCTAssertEqual(inst.valueQuantity?.unit, "in")
-		XCTAssertEqual(inst.valueQuantity?.value, "66.89999999999999")
+		XCTAssertEqual(inst.valueQuantity?.value, "66.9")
 		
 		return inst
 	}

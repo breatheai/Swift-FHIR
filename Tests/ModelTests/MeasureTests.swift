@@ -133,7 +133,7 @@ class MeasureTests: XCTestCase {
 		XCTAssertEqual(inst.title, "Exclusive Breastfeeding Measure")
 		XCTAssertEqual(inst.topic?[0].text, "Exclusive Breastfeeding")
 		XCTAssertEqual(inst.type?[0].coding?[0].code, "process")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}

@@ -3,8 +3,12 @@ __pycache__
 *.pyc
 env
 .build
+venv
 
-# downloads
+
+fhir_parser/downloads/
+fhir_parser/mappings.py
+fhir_parser/settings.py
 generate/downloads/fhir-spec*
 generate/downloads/index.html
 generate/downloads/site

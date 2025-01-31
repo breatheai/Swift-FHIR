@@ -50,7 +50,7 @@ class CapabilityStatementTests: XCTestCase {
 		XCTAssertEqual(inst.document?[0].mode, DocumentMode(rawValue: "consumer")!)
 		// Don't know how to create unit test for "document?[0].profile", which is a FHIRCanonical
 		XCTAssertEqual(inst.experimental, true)
-		XCTAssertEqual(inst.fhirVersion, "4.0.0")
+		XCTAssertEqual(inst.fhirVersion, "4.0.1")
 		XCTAssertEqual(inst.format?[0], "xml")
 		XCTAssertEqual(inst.format?[1], "json")
 		XCTAssertEqual(inst.id, "example")
@@ -144,7 +144,7 @@ class CapabilityStatementTests: XCTestCase {
 		XCTAssertEqual(inst.contact?[0].telecom?[0].value, "http://hl7.org/fhir")
 		XCTAssertEqual(inst.date?.description, "2013-06-18")
 		XCTAssertEqual(inst.description_fhir, "Prototype Capability Statement for September 2013 Connectathon")
-		XCTAssertEqual(inst.fhirVersion, "4.0.0")
+		XCTAssertEqual(inst.fhirVersion, "4.0.1")
 		XCTAssertEqual(inst.format?[0], "json")
 		XCTAssertEqual(inst.format?[1], "xml")
 		XCTAssertEqual(inst.id, "phr")

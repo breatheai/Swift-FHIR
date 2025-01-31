@@ -81,7 +81,7 @@ class RequestTests: XCTestCase {
 		handler.parameters[.elements] = "name,address"
 		request = URLRequest(url: URL(string: "https://fhir.smarthealthit.org/Patient/123")!)
 		try? handler.prepare(request: &request)
-		XCTAssertEqual("https://fhir.smarthealthit.org/Patient/123?_summary=true&_elements=name,address", request.url?.absoluteString ?? "nil")
+		XCTAssertEqual("https://fhir.smarthealthit.org/Patient/123?_elements=name,address&_summary=true", request.url?.absoluteString ?? "nil")
 		
 		handler.options.remove(.summary)
 		request = URLRequest(url: URL(string: "https://fhir.smarthealthit.org/Patient/123")!)

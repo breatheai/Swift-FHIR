@@ -90,7 +90,7 @@ class ConceptMapTests: XCTestCase {
 		XCTAssertEqual(inst.useContext?[0].code?.code, "venue")
 		XCTAssertEqual(inst.useContext?[0].code?.system?.absoluteString, "http://terminology.hl7.org/CodeSystem/usage-context-type")
 		XCTAssertEqual(inst.useContext?[0].valueCodeableConcept?.text, "for CCDA Usage")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}
@@ -138,7 +138,7 @@ class ConceptMapTests: XCTestCase {
 		XCTAssertEqual(inst.text?.status, NarrativeStatus(rawValue: "generated")!)
 		XCTAssertEqual(inst.title, "FHIR Example 2")
 		XCTAssertEqual(inst.url?.absoluteString, "http://hl7.org/fhir/ConceptMap/example2")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}
@@ -218,7 +218,7 @@ class ConceptMapTests: XCTestCase {
 		// Don't know how to create unit test for "targetCanonical", which is a FHIRCanonical
 		XCTAssertEqual(inst.text?.status, NarrativeStatus(rawValue: "generated")!)
 		XCTAssertEqual(inst.url?.absoluteString, "http://hl7.org/fhir/ConceptMap/102")
-		XCTAssertEqual(inst.version, "4.0.0")
+		XCTAssertEqual(inst.version, "4.0.1")
 		
 		return inst
 	}

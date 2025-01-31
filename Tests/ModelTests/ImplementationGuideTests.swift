@@ -64,7 +64,7 @@ class ImplementationGuideTests: XCTestCase {
 		XCTAssertEqual(inst.definition?.resource?[0].reference?.reference, "Patient/test")
 		// Don't know how to create unit test for "dependsOn?[0].uri", which is a FHIRCanonical
 		XCTAssertEqual(inst.experimental, false)
-		XCTAssertEqual(inst.fhirVersion?[0], "4.0.0")
+		XCTAssertEqual(inst.fhirVersion?[0], "4.0.1")
 		// Don't know how to create unit test for "global?[0].profile", which is a FHIRCanonical
 		XCTAssertEqual(inst.global?[0].type, ResourceType(rawValue: "Patient")!)
 		XCTAssertEqual(inst.id, "example")
