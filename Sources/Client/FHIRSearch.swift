@@ -281,19 +281,22 @@ class FHIRSearchParam: CustomStringConvertible
 	}
 }
 
+actor FHIRSearchConstructActor {
+    static var handlers: [FHIRSearchConstructHandler] = [
+        FHIRSearchConstructAndHandler(),
+        FHIRSearchConstructOrHandler(),
+        FHIRSearchConstructModifierHandler(),
+        FHIRSearchConstructOperatorHandler(),
+        FHIRSearchConstructTypeHandler(),
+    ]
+}
 
 struct FHIRSearchConstruct
 {
-	static var handlers: [FHIRSearchConstructHandler] = [
-		FHIRSearchConstructAndHandler(),
-		FHIRSearchConstructOrHandler(),
-		FHIRSearchConstructModifierHandler(),
-		FHIRSearchConstructOperatorHandler(),
-		FHIRSearchConstructTypeHandler(),
-	]
+
 	
 	static func handlerFor(_ key: String) -> FHIRSearchConstructHandler? {
-		for handler in self.handlers {
+        for handler in FHIRSearchConstructActor.handlers {
 			if handler.handles(key) {
 				return handler
 			}

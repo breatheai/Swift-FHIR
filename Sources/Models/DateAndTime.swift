@@ -61,7 +61,7 @@ public struct FHIRDate: DateAndTime {
 	
 	/// Today's date.
 	public static var today: FHIRDate {
-		let (date, _, _) = DateNSDateConverter.shared.parse(date: Date())
+		let (date, _, _) = DateNSDateConverterActor.shared.parse(date: Date())
 		return date
 	}
 	
@@ -110,7 +110,7 @@ public struct FHIRDate: DateAndTime {
 	public typealias JSONType = String
 	
 	public init(json: JSONType, owner: FHIRAbstractBase?, context: inout FHIRInstantiationContext) {
-		if let date = DateAndTimeParser.shared.parse(string: json).date {
+		if let date = DateAndTimeParserActor.shared.parse(string: json).date {
 			year = date.year
 			month = date.month
 			day = date.day
@@ -130,7 +130,7 @@ public struct FHIRDate: DateAndTime {
 	// MARK: Protocols
 	
 	public var nsDate: Date {
-		return DateNSDateConverter.shared.create(fromDate: self)
+		return DateNSDateConverterActor.shared.create(fromDate: self)
 	}
 	
 	public var description: String {
@@ -228,7 +228,7 @@ public struct FHIRTime: DateAndTime {
 	
 	/// The clock time of right now.
 	public static var now: FHIRTime {
-		let (_, time, _) = DateNSDateConverter.shared.parse(date: Date())
+		let (_, time, _) = DateNSDateConverterActor.shared.parse(date: Date())
 		return time
 	}
 	
@@ -303,7 +303,7 @@ public struct FHIRTime: DateAndTime {
 	public typealias JSONType = String
 	
 	public init(json: JSONType, owner: FHIRAbstractBase?, context: inout FHIRInstantiationContext) {
-		if let time = DateAndTimeParser.shared.parse(string: json, isTimeOnly: true).time {
+		if let time = DateAndTimeParserActor.shared.parse(string: json, isTimeOnly: true).time {
 			hour = time.hour
 			minute = time.minute
 			second = time.second
@@ -325,7 +325,7 @@ public struct FHIRTime: DateAndTime {
 	// MARK: Protocols
 	
 	public var nsDate: Date {
-		return DateNSDateConverter.shared.create(fromTime: self)
+		return DateNSDateConverterActor.shared.create(fromTime: self)
 	}
 	
 	// TODO: this implementation uses a workaround using string coercion instead of format: "%02d:%02d:%@" because %@ with String is not
@@ -414,7 +414,7 @@ public struct DateTime: DateAndTime {
 	
 	/// This very date and time: a DateTime instance representing current date and time.
 	public static var now: DateTime {
-		let (date, time, tz) = DateNSDateConverter.shared.parse(date: Date())
+		let (date, time, tz) = DateNSDateConverterActor.shared.parse(date: Date())
 		return DateTime(date: date, time: time, timeZone: tz)
 	}
 	
@@ -464,7 +464,7 @@ public struct DateTime: DateAndTime {
 	public typealias JSONType = String
 	
 	public init(json: JSONType, owner: FHIRAbstractBase?, context: inout FHIRInstantiationContext) {
-		let dt = DateAndTimeParser.shared.parse(string: json)
+		let dt = DateAndTimeParserActor.shared.parse(string: json)
 		if let date = dt.date {
 			self.date = date
 			if let time = dt.time {
@@ -489,9 +489,9 @@ public struct DateTime: DateAndTime {
 	
 	public var nsDate: Date {
 		if let time = time, let tz = timeZone {
-			return DateNSDateConverter.shared.create(date: date, time: time, timeZone: tz)
+			return DateNSDateConverterActor.shared.create(date: date, time: time, timeZone: tz)
 		}
-		return DateNSDateConverter.shared.create(fromDate: date)
+		return DateNSDateConverterActor.shared.create(fromDate: date)
 	}
 	
 	public var description: String {
@@ -569,7 +569,7 @@ public struct Instant: DateAndTime {
 	
 	/// This very instant: an Instant instance representing current date and time.
 	public static var now: Instant {
-		let (date, time, tz) = DateNSDateConverter.shared.parse(date: Date())
+		let (date, time, tz) = DateNSDateConverterActor.shared.parse(date: Date())
 		return Instant(date: date, time: time, timeZone: tz)
 	}
 	
@@ -618,7 +618,7 @@ public struct Instant: DateAndTime {
 	public typealias JSONType = String
 	
 	public init(json: JSONType, owner: FHIRAbstractBase?, context: inout FHIRInstantiationContext) {
-		let dt = DateAndTimeParser.shared.parse(string: json)
+		let dt = DateAndTimeParserActor.shared.parse(string: json)
 		if let date = dt.date, let time = dt.time, let tz = dt.tz, let tzString = dt.tzString, nil != date.month, nil != date.day, nil != time.second {
 			self.date = date
 			self.time = time
@@ -642,7 +642,7 @@ public struct Instant: DateAndTime {
 	// MARK: Protocols
 	
 	public var nsDate: Date {
-		return DateNSDateConverter.shared.create(date: date, time: time, timeZone: timeZone)
+		return DateNSDateConverterActor.shared.create(date: date, time: time, timeZone: timeZone)
 	}
 	
 	public var description: String {
@@ -704,14 +704,16 @@ extension Instant {
 
 // MARK: -
 
-
+actor DateNSDateConverterActor {
+    static var shared = DateNSDateConverter();
+}
 /**
 Converts between NSDate and our FHIRDate, FHIRTime, DateTime and Instance structs.
 */
 class DateNSDateConverter {
 	
 	/// The singleton instance
-	static var shared = DateNSDateConverter()
+//	static var shared = DateNSDateConverter()
 	
 	let calendar: Calendar
 	let utc: TimeZone
@@ -790,6 +792,10 @@ class DateNSDateConverter {
 
 // MARK: -
 
+/// The singleton instance
+actor DateAndTimeParserActor {
+    static var shared = DateAndTimeParser()
+}
 
 /**
 Parses Date and Time from strings in a narrow set of the extended ISO 8601 format.
@@ -804,8 +810,6 @@ class DateAndTimeParser {
 		var tzString: String?
 	}
 	
-	/// The singleton instance
-	static var shared = DateAndTimeParser()
 	
 	/**
 	Parses a date string in "YYYY[-MM[-DD]]" and a time string in "hh:mm[:ss[.sss]]" (extended ISO 8601) format,
@@ -905,25 +909,25 @@ public extension Date {
 	
 	/** Create a `FHIRDate` instance from the receiver. */
 	func fhir_asDate() -> FHIRDate {
-		let (date, _, _) = DateNSDateConverter.shared.parse(date: self)
+		let (date, _, _) = DateNSDateConverterActor.shared.parse(date: self)
 		return date
 	}
 	
 	/** Create a `Time` instance from the receiver. */
 	func fhir_asTime() -> FHIRTime {
-		let (_, time, _) = DateNSDateConverter.shared.parse(date: self)
+		let (_, time, _) = DateNSDateConverterActor.shared.parse(date: self)
 		return time
 	}
 	
 	/** Create a `DateTime` instance from the receiver. */
 	func fhir_asDateTime() -> DateTime {
-		let (date, time, tz) = DateNSDateConverter.shared.parse(date: self)
+		let (date, time, tz) = DateNSDateConverterActor.shared.parse(date: self)
 		return DateTime(date: date, time: time, timeZone: tz)
 	}
 	
 	/** Create an `Instance` instance from the receiver. */
 	func fhir_asInstant() -> Instant {
-		let (date, time, tz) = DateNSDateConverter.shared.parse(date: self)
+		let (date, time, tz) = DateNSDateConverterActor.shared.parse(date: self)
 		return Instant(date: date, time: time, timeZone: tz)
 	}
 }
