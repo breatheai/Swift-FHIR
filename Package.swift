@@ -13,7 +13,7 @@ import PackageDescription
 let package = Package(
 	name: "FHIR",
 	platforms: [
-		.macOS(.v13),
+		.macOS(.v15),
         .iOS(.v12)
 	],
     products: [
@@ -39,5 +39,6 @@ let package = Package(
             dependencies: ["Models"]),
 
 		// Test targets not supported until Swift Packages include resource bundles.
-    ]
+    ],
+    swiftLanguageModes: [.version("5.10"), .version("6")]
 )
