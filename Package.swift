@@ -31,7 +31,13 @@ let package = Package(
 		.target(
 			name: "Client",
 			dependencies: ["Models"]),
-		
+        .testTarget(
+            name: "ClientTests",
+            dependencies: ["Client"]),
+        .testTarget(
+            name: "ModelTests",
+            dependencies: ["Models"]),
+
 		// Test targets not supported until Swift Packages include resource bundles.
     ]
 )

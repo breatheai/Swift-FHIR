@@ -9,5 +9,8 @@ pip3 install -r requirements.txt
 python3 generate.py
 ls downloads
 rm -rf venv
+cd ..
+cp -rp TestResources /tmp/
+cp -rp fhir-parser /tmp/
 ```
 

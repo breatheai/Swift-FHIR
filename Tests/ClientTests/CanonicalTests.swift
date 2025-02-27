@@ -9,7 +9,7 @@
 import XCTest
 #if !NO_MODEL_IMPORT
 import Models
-import ModelTests
+//import ModelTests
 #else
 import SwiftFHIR
 #endif
@@ -18,16 +18,17 @@ import SwiftFHIR
 /**
 Test serialization and deserialization of FHIR canonical datatype.
 */
-class CanonicalTests: XCTestCase {
+final class CanonicalTests: XCTestCase {
 	
 	var tests: [String: FHIRJSON]?
 	
 	override func setUp() {
 		super.setUp()
-		tests = (try? readJSONFile("CanonicalTypes.json", directory: testResourcesDirectory)) as? [String: FHIRJSON]
+        tests = (try? readJSONFile("CanonicalTypes.json", directory: testResourcesDirectory)) as? [String: FHIRJSON]
 	}
 	
-	func testCanonicalVersion() {
+    @MainActor
+    func testCanonicalVersion() {
 		guard let json1 = tests?["initCanonicalWithVersion"] else {
 			XCTAssertTrue(false, "Tests not initialized")
 			return
@@ -50,7 +51,8 @@ class CanonicalTests: XCTestCase {
 		XCTAssertEqual("http://example.org/fhir/ActivityDefinition/activity-edu-hypertension|1.0.5", (json["canonical"] as? String))
 	}
 	
-	func testCanonicalNoVersion() {
+    @MainActor
+    func testCanonicalNoVersion() {
 		guard let json1 = tests?["initCanonicalWithoutVersion"] else {
 			XCTAssertTrue(false, "Tests not initialized")
 			return
@@ -73,7 +75,8 @@ class CanonicalTests: XCTestCase {
 		XCTAssertEqual("http://example.org/fhir/ActivityDefinition/activity-edu-diabetes", (json["canonical"] as? String))
 	}
 	
-	func testCanonicalFragment() {
+    @MainActor
+    func testCanonicalFragment() {
 		guard let json1 = tests?["initCanonicalWithFragment"] else {
 			XCTAssertTrue(false, "Tests not initialized")
 			return
@@ -96,7 +99,8 @@ class CanonicalTests: XCTestCase {
 		XCTAssertNotNil(json["canonical"])
 		XCTAssertEqual("http://example.org/fhir/ActivityDefinition/activity-edu-diabetes|2.0.0#ref1", (json["canonical"] as? String))
 	}
-	
+    
+    @MainActor
 	func testCanonicalResolutionContained() {
 		guard let json = tests?["initCanonicalContained"] else {
 			XCTAssertTrue(false, "Tests not initialized")
@@ -124,6 +128,7 @@ class CanonicalTests: XCTestCase {
 		}
 	}
 	
+    @MainActor
 	func testCanonicalResolutionBundled() {
 		guard let json = tests?["initCanonicalBundled"] else {
 			XCTAssertTrue(false, "Tests not initialized")
